@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+
+  <head>
+    <title>WSV - Counter</title>
+    <meta name="author" content="Combined_Count">
+    <script type="text/javascript" src="jquery-3.1.1.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@500&display=swap" rel="stylesheet">
+    <link rel=stylesheet href="../../Main/assets/ess/odometer.css">
+    <script src="../../Main/assets/ess/odometer.js"></script>
+    <link rel="stylesheet" href="../../Main/assets/css/embed.css" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <script async src='/cdn-cgi/bm/cv/669835187/api.js'></script>
+    <link rel="icon" href="../../Main/images/logo.png" type="image/x-icon" sizes="16x16">
+  <body>
+      <img
+        src="../../Main/images/logo.png"
+        alt=""
+        id="avatar"
+        align="left">
+
+    </body>
+    <p id="title">Wherry Visualised Combined</p>
+      <div id=show><span id="count" style="color: White" class="odometer">0</span>
+    <style>
+
+      body {
+        background-color: transparent;
+      }
+
+     #powered {
+        font-size: 16pt;
+        font-family: Roboto;
+        font-weight: 700;
+        text-align: center;
+      }
+
+      #mbtext {
+        font-size: 40pt;
+        font-family: Roboto;
+        font-weight: 100;
+        text-align: left;	
+      }
+
+      #text {
+        text-align: left;
+      }
+
+
+      #count {
+        font-size: 65pt;
+        font-family: Roboto;
+        font-weight: 800;
+      }
+
+      #show {
+        text-align: left;
+      }
+
+      #avatar {
+        top: 0px;
+        left: 0px;
+        width: 176px;
+        height: 176px;
+      }
+
+      #title {
+        width: 100%;
+        height: 25px;
+        left: 0px;
+        top: 0px;
+        text-align: left;
+        font-family: "Roboto";
+        font-weight: 800;
+        color: White;
+      }
+
+      @font-face {
+        font-family: RobotoOld;
+        src: url("https://axern.space/font/Roboto-Regular.tff");
+      }
+    </style>
+
+        <script>
+          var Channels = [
+            "UCVfKmfOY5SWfx_rt51oG92Q", //HuntingStats378-Random
+            "UClOyuxZvQkoHoIn15kNbkUw", //HuntingStats378
+            "UCBr8CViBT0tKKu9Dv6Vr2QQ", //Alfred The American Teen Video Maker 2K8
+            "UCkK1Ayp6kGd6FXpLCYT26WA", //HuntingPuma378
+            "UC99XLz9OoBf6aKWhLlI0mVg", //Streds!?!?!?
+            "UCwQK-SX6EdSCSGY8GUJ5x2w", //Barkins
+            "UCJxoRLgwJVs7gjbPbCsVmvA", //46Harry
+            "UCGQSEgs7lVZc9Y604V0vhRQ", //Stridesy1
+            "UC4I3gWB7MOEDRX8jnAiISqw", //KILLAMONJAMBO
+            "UCm7ufj80Thx_z3XPXTajNGQ", //Whos.bellaaaa
+            "UCpmqckq7IX9yBA7LOgDFKQw", //CharL13DPlotagonProductions
+            "UCnIxfn4bQh5-_BkdEklMO3A", //HugoTHEgamer3
+            "UCIrsYM71kCLm2KFqBWdhckg", //WhatsWrongWithTheDirector?!
+            "UCJFlf_XEsR9S-JqyV-RcE-A", //Joan Latta
+            "UCENpVG2-c3L_l5KpUyjd50A", //Lee Calderbank
+            "UCSZmuekQ4n4cuzf3tL9N01A", //The Wherry School
+            "UCTFEvDXe_S4eTr8ZBVa1JwQ", //🍁M3lody🍁
+            "UCC3LpbQS5GO8c1rtvXPurGA", //HuntingPuma378-Random
+            "UCbk45nzeBW4VcV2jX_7slww", //leowright
+            "UCBD7bHwoYERM-C3enBJv6sQ", //GabyDaPigeon
+            "UCSSM14qqbH8EOA0uyd3NX8w", //MW17
+            "UCHbBW81CjKs6EcsvXg9WkQg", //Affintego
+       ];
+      var number = 0;
+      var work = [];
+
+      function render() {
+        datas();
+        number = work.reduce(function (a, b) {
+          return a + b;
+        }, 0);
+        count.innerHTML = number;
+      }
+
+      function datas() {
+        for (let i = 0; i < Channels.length; i++) {
+  fetch("https://mixerno.space/api/youtube-channel-counter/user/"+ Channels[i] + "")
+            .then((res) => res.json())
+            .then((data) => {
+              work[i] = data.counts[0].count;
+            });
+        }
+      }
+
+
+
+      render();
+
+      setInterval(() => {
+        render();
+      }, 2000);
+</script>
